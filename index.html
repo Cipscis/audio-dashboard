@@ -1,0 +1,40 @@
+<html>
+<head>
+	<title>Sounds</title>
+	<script src="/content/scripts/lib/require/require.js" type="text/javascript"></script>
+	<script src="/content/scripts/lib/require/config.js" type="text/javascript"></script>
+
+	<link rel="stylesheet" href="/content/css/style.css" />
+</head>
+<body>
+	<script src="/content/scripts/app/page/all.js" type="text/javascript"></script>
+
+	<script id="sound-template" type="x-js-template">
+		{{#sounds}}
+			<li class="grid__item one-half">
+				<div class="sound js-sound" {{#loop}}data-sound-loop="true"{{/loop}}>
+					<h3 class="sound__name">{{name}} <span class="sound__loop js-sound-loop"></span></h3>
+					<audio src="/content/sounds/{{fileName}}" class="js-sound-audio"></audio>
+					<div class="sound__toggle js-sound-toggle"></div>
+					<input type="range" class="sound__volume js-sound-volume" min="0" max="2" step="0.01" />
+					<select class="sound__reverb js-sound-reverb">
+						<option value="">No Reverb</option>
+						{{# ../reverb }}
+							<option value="/content/sounds/reverb/{{fileName}}">{{name}}</option>
+						{{/ ../reverb }}
+					</select>
+				</div>
+			</li>
+		{{/sounds}}
+	</script>
+
+	<div class="layout">
+
+		<div class="global-mute js-global-mute"></div>
+
+		<ul class="grid grid-v js-sounds">
+		</ul>
+
+	</div>
+</body>
+</html>

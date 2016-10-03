@@ -1,0 +1,231 @@
+.grid:after, .grid-v:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+.layout {
+  padding: 100px;
+  max-width: 960px;
+  margin: 0 auto;
+}
+
+.grid__item {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  float: left;
+}
+
+.grid {
+  margin-left: -20px;
+}
+
+.grid > .grid__item {
+  padding-left: 20px;
+}
+
+.grid-v {
+  margin-top: -20px;
+}
+
+.grid-v > .grid__item {
+  padding-top: 20px;
+}
+
+.one-half {
+  width: 50%;
+}
+
+.one-quarter {
+  width: 25%;
+}
+
+.global-mute {
+  position: fixed;
+  top: 30px;
+  left: 30px;
+  width: 25px;
+  height: 40px;
+  overflow: hidden;
+}
+
+.global-mute:before {
+  content: "";
+  width: 0;
+  height: 0;
+  position: absolute;
+  top: 0;
+  left: -10px;
+  border-left: 0 solid transparent;
+  border-top: 20px solid transparent;
+  border-bottom: 20px solid transparent;
+  border-right: 34px solid #000;
+}
+
+.global-mute.is-active:before {
+  border-right-color: #900;
+}
+
+.sound {
+  padding: 20px;
+}
+
+.sound__name {
+  text-align: center;
+}
+
+.sound__toggle {
+  position: relative;
+  width: 100px;
+  height: 100px;
+  margin: 20px auto;
+  border: 5px solid #000;
+  border-radius: 100%;
+  transition: all 0.3s;
+}
+
+.sound__toggle:after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin-left: -15px;
+  margin-top: -20px;
+  width: 0;
+  height: 0;
+  padding: 0;
+  float: left;
+  background: transparent;
+  border-left: 34px solid #000;
+  border-top: 20px solid transparent;
+  border-bottom: 20px solid transparent;
+  border-right: 0 solid transparent;
+}
+
+.sound__toggle.is-playing {
+  border-color: #392;
+}
+
+.sound__toggle.is-playing:after {
+  margin-left: -20px;
+  border-left: 15px solid #000;
+  border-top: 0;
+  border-bottom: 0;
+  border-right: 15px solid #000;
+  width: 10px;
+  height: 40px;
+}
+
+.sound__volume {
+  display: block;
+  width: 200px;
+  margin: 20px auto;
+}
+
+.sound__reverb {
+  display: block;
+  width: 200px;
+  margin: 20px auto;
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.sound__loop {
+  position: relative;
+  display: inline-block;
+  height: 20px;
+  width: 20px;
+  border-top: 2px solid #000;
+  border-right: 2px solid #000;
+  border-bottom: 2px solid #000;
+  border-left: 2px solid transparent;
+  border-radius: 100%;
+}
+
+[data-sound-loop] .sound__loop {
+  animation: spin 1s linear infinite;
+}
+
+.sound__loop:after {
+  position: absolute;
+  content: "";
+  width: 0;
+  height: 0;
+  left: -3px;
+  bottom: 0px;
+  transform: rotate(135deg);
+  border-top: 5px solid #000;
+  border-right: 5px solid transparent;
+  border-left: 5px solid transparent;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes centerSpin {
+  from {
+    transform: translateX(-50%) rotate(0);
+  }
+  to {
+    transform: translateX(-50%) rotate(360deg);
+  }
+}
+
+.is-loading {
+  position: relative;
+}
+
+.is-loading:before {
+  content: "";
+  position: absolute;
+  z-index: 1;
+  top: 30px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 150px;
+  height: 150px;
+  border-radius: 20px;
+  background: rgba(0, 0, 0, 0.6);
+  opacity: 0;
+  animation: fadeIn 0.5s ease 0.5s normal forwards;
+}
+
+.is-loading:after {
+  content: "";
+  position: absolute;
+  z-index: 1;
+  top: 60px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 70px;
+  height: 70px;
+  border: 10px solid rgba(255, 255, 255, 0.2);
+  border-top-color: white;
+  border-radius: 100%;
+  opacity: 0;
+  animation: fadeIn 0.5s ease 0.5s normal forwards, centerSpin 1s linear infinite;
+}

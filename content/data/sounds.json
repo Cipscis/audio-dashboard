@@ -1,0 +1,33 @@
+{
+	"sounds": [
+		{
+			"name": "Clock tick",
+			"fileName": "clock-tick.wav",
+			"loop": true
+		},
+		{
+			"name": "Forest Evening",
+			"fileName": "forest-evening.wav",
+			"loop": true
+		},
+		{
+			"name": "Slaps",
+			"fileName": "slaps.wav",
+			"loop": true
+		}
+	],
+	"reverb": [
+		{
+			"name": "Church",
+			"fileName": "church.wav"
+		},
+		{
+			"name": "Underground Carpark",
+			"fileName": "underground-carpark.wav"
+		},
+		{
+			"name": "Mausoleum",
+			"fileName": "mausoleum.wav"
+		}
+	]
+}

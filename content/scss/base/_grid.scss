@@ -1,0 +1,35 @@
+.grid__item {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+
+	float: left;
+}
+
+.grid {
+	@extend %cf;
+
+	margin-left: -20px;
+
+	> .grid__item {
+		padding-left: 20px;
+	}
+}
+
+.grid-v {
+	@extend %cf;
+
+	margin-top: -20px;
+
+	> .grid__item {
+		padding-top: 20px;
+	}
+}
+
+.one-half {
+	width: 50%;
+}
+
+.one-quarter {
+	width: 25%;
+}
